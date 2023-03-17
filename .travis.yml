@@ -16,7 +16,7 @@ after_success:
   - docker-build -t edvinasstanys/multi-server ./server
   - docker-build -t edvinasstanys/multi-worker ./worker
 # login to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "\$DOCKER_PASSWORD" | docker login -u "\$DOCKER_ID" --password-stdin
 #take images and push them to dicker
   - docker-push edvinasstanys/multi-client
   - docker-push edvinasstanys/multi-nginx
