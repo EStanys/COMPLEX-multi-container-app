@@ -22,3 +22,4 @@ after_success:
   - docker-push edvinasstanys/multi-nginx
   - docker-push edvinasstanys/multi-server
   - docker-push edvinasstanys/multi-worker
+
