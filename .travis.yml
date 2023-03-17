@@ -1,0 +1,20 @@
+language: generic
+sudo: required
+
+services:
+  -docker
+
+before_install:
+  - docker build -t edvinasstanys/react-test -f ./client/DockerFile.dev ./client
+
+script:
+  - docker run edvinasstanys/react-test npm test -- --coverage
+
+after_success:
+  - docker-build -t edvinasstanys/multi-client ./client
+  - docker-build -t edvinasstanys/multi-nginx ./nginx
+  - docker-build -t edvinasstanys/multi-server ./server
+  - docker-build -t edvinasstanys/multi-worker ./worker
+
+script:
+  - docker run -e CI=true USERNAME/react-test npm test
